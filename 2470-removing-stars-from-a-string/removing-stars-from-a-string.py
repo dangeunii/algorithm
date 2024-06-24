@@ -7,7 +7,10 @@ class Solution:
             else:
                 q.append(val)    
   
-        answer = ""
-        for i in range(len(q)):
-            answer = answer + q[i]
+        # answer = ""
+        # for i in range(len(q)):
+        #     answer = answer + q[i]
+        # return answer
+
+        answer = ''.join(q)
         return answer
