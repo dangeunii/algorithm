@@ -12,4 +12,4 @@ class Solution:
         #     answer = answer + q[i]
         # return answer
 
-        return ''.join(q)
+        return "".join(q)
