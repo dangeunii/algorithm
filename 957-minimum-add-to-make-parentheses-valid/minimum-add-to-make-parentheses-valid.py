@@ -10,4 +10,7 @@ class Solution:
             else:
                 cnt += 1
     
-        return cnt + len(q)
+        if len(q) > 0:
+            cnt += len(q)
+
+        return cnt
