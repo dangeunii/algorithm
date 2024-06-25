@@ -10,8 +10,5 @@ class Solution:
                     q.pop()
                 else:
                     cnt += 1
-        
-        if len(q) > 0:
-            cnt += len(q)
     
-        return cnt
+        return cnt + len(q)
