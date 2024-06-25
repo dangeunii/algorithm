@@ -5,10 +5,9 @@ class Solution:
         for val in s:
             if val == "(":
                 q.append(val)
+            elif val == ")" and len(q) > 0:
+                q.pop()
             else:
-                if len(q) > 0:
-                    q.pop()
-                else:
-                    cnt += 1
+                cnt += 1
     
         return cnt + len(q)
