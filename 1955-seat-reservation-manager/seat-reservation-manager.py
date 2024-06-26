@@ -5,10 +5,9 @@ class SeatManager:
     def __init__(self, n: int):
         self.seat = []
         for i in range(n):
-            heapq.heappush(self.seat,i+1)
+            self.seat.append(i+1)
 
     def reserve(self) -> int:
-
         n = heapq.heappop(self.seat)
         return n
 
