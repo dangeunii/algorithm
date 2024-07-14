@@ -17,7 +17,7 @@ for i in range(N):
     info.append(arr)
 
 max_val = max(list(map(max,info)))
-min_val = min(list(map(min,info)))
+#min_val = min(list(map(min,info)))
 def DFS(y, x, k):
     visited[y][x] = 1
 
@@ -35,7 +35,7 @@ def DFS(y, x, k):
         DFS(ny, nx,k)
     return
 
-for k in range(min_val,max_val+1):
+for k in range(max_val+1):
     #print("k : ", k)
     visited = [[0 for col in range(N)] for row in range(N)]
     cnt = 0
