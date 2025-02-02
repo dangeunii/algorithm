@@ -15,6 +15,7 @@ typedef struct
 } Data;
 
 vector<Data> adj[1001];
+vector<Data> rev_adj[1001];
 int Dijk[1001];
 int cnt[1001];
 
@@ -27,7 +28,7 @@ struct cmp
 
 priority_queue<Data, vector<Data>, cmp> pq;
 
-void D(int start) {
+void D(int start, vector<Data> graph[]) {
     for(int i = 1; i < N+1; i++){
         Dijk[i] = INF;
     }
@@ -45,9 +46,9 @@ void D(int start) {
             continue;
         }
 
-        for(int i = 0 ; i < adj[nownode].size(); i ++){
-            int nextnode = adj[nownode][i].node;
-            int weight = adj[nownode][i].weight;
+        for(int i = 0 ; i < graph[nownode].size(); i ++){
+            int nextnode = graph[nownode][i].node;
+            int weight = graph[nownode][i].weight;
 
             int w = weight + weightSum;
             if ( Dijk[nextnode] > w){
@@ -69,22 +70,19 @@ int main(){
         cin >> u >> v >> w;
 
         adj[u].push_back({v, w});
+        rev_adj[v].push_back({u,w});
     }
 
-    D(X);
+    D(X, adj);
 
     for(int i = 1 ; i < N+1; i++){
         cnt[i] = Dijk[i];
     }
 
-    for(int i = 1; i < N+1; i++){
-        if (i == X){
-            continue;
-        }
-        else{
-            D(i);
-            cnt[i] += Dijk[X];
-        }
+    D(X, rev_adj);
+
+    for(int i = 1 ; i < N+1; i++){
+        cnt[i] += Dijk[i];
     }
 
     int max = *std::max_element(cnt, cnt+N+1);
